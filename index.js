@@ -10,7 +10,6 @@ const session=require('express-session');
 const flash=require('connect-flash');
 const passport=require('passport');
 const localStrategy=require('passport-local');
-const port=process.env.PORT || 2001;
 
 app.use(methodoveride('_method'));
 app.engine('ejs',ejsMate);
@@ -160,6 +159,7 @@ app.use((err,req,res,next)=>{
     res.status(sta).send(message);
 });
 
+const port=process.env.PORT || 2001;
 app.listen(port,()=>{
-    console.log('Started listening on port 2001')
+    console.log(`Started listening on port ${port}`);
 })
