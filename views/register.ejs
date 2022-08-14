@@ -1,0 +1,57 @@
+<% layout('/layouts/boilerplate') %>
+<script src="usermanual.js"></script>
+<div class="alert alert-primary mt-5" role="alert">
+    <p>Tips to create strong password  <button class="btn btn-info" id="hidebtn">Show</button></p>
+    <div id="tip" style="display:none">
+        <ul>
+            <li>There should be atleast minimum length of 6 characters</li>
+            <li>Password should have atleast one capital letter</li>
+            <li>Password should have one special symbols like:&_^$@#!/\</li>
+        </ul>
+    </div>
+</div>
+<form action="/register" method="post" id="post" class="validated-form" novalidate>
+    <div class="mb-3">
+        <label for="username" name="username" class="form-label">username</label>
+        <input class="form-control" type="text" name="username" id="username" required>
+        <div class="invalid-feedback">
+            Please provide a valid name.
+        </div>
+        <div class="valid-feedback">
+            Looks Good one..
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="password" name="password" class="form-label">password</label>
+        <input class="form-control" type="password" name="password" id="password" required>
+        <div class="invalid-feedback">
+            Please provide strong password.
+        </div>
+        <div class="valid-feedback">
+            Looks good password.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="email" name="email" class="form-label">Email</label>
+        <input class="form-control" type="email" name="email" required>
+        <div class="invalid-feedback">
+            Please provide your valid Email.
+        </div>
+        <div class="valid-feedback">
+            Good..
+        </div>
+    </div>
+    <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    <div class="mb-5">
+        <button class="btn btn-success">Register</button>
+    </div>
+</form>
+<script src="/extrascript.js"></script>

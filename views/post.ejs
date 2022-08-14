@@ -1,0 +1,37 @@
+<% layout('/layouts/boilerplate') %>
+<h1 class="text-center">Adding a new Product!!</h1>
+<div class="col-6 offset-3">
+    <form action="/products" method="post" id="post" novalidate>
+        <section class="mb-3">
+            <label class="form-label" for="name" name="name">Name</label>
+            <input class="form-control" type="text" id="name" name="name" required>
+        </section>
+        <section class="mb-3">
+            <label for="price" name="price" class="form-label">Price</label>
+            <div class="input-group">
+                <span id="price-label" class="input-group-text">$</span>
+                <input type="number" id="price" name="price" class="form-control" placeholder="0" required>
+            </div>
+        </section>
+        <section class="mb-3">
+            <label for="category" name="category" class="form-label">category</label>
+            <select name="category" id="category" name="category" class="form-control" required>
+                <option value="">--select--</option>
+                <option value="fruit">fruit</option>
+                <option value="vegetable">vegetable</option>
+                <option value="dairy">dairy</option>
+                <option value="needs">needs</option>
+            </select>
+        </section>
+        <div class="mb-3">
+            <label for="img" name="image" class="form-label">IMAGE URL:</label>
+            <input type="text" name="image" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-success">Add Product</button>
+        </div>
+    </form>
+    <div class="mb-3">
+        <a class="btn btn-dark" href="/products">Back to Home Page</a>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<% layout('/layouts/boilerplate') %>
+<h1 class="text-center text-success">Updating the Product</h1>
+<div class="col-6 offset-3">
+    <form action="/products/<%=product._id%>?_method=patch" method="post" id="post" novalidate>
+        <div class="mb-3">
+            <label for="name" class="form-label text-secondary">Name:</label>
+            <input type="text" name="name" id="name" value="<%=product.name%>" class="form-control" required>
+        </div>
+
+        <section class="mb-3">
+            <label for="price" name="price" class="form-label text-secondary">Price:</label>
+            <div class="input-group">
+                <span id="price-label" class="input-group-text">$</span>
+                <input type="number" id="price" name="price" class="form-control" value="<%=product.price%>" required>
+            </div>
+        </section>
+
+        <div class="mb-3">
+            <label for="category" name="category" class="form-label text-secondary">Category:</label>
+            <select name="category" id="category" class="form-control" required>
+                <option value="fruit" <%=product.category==='fruit'?'selected':""%>>fruit</option>
+                <option value="vegetable" <%=product.category==='vegetable'?'selected':""%>>vegetable</option>
+                <option value="dairy" <%=product.category==='dairy'?'selected':""%>>dairy</option>
+                <option value="needs" <%=product.category==='needs'?'selected':""%>>needs</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="image" name="image" class="form-label">Image url:</label>
+            <input type="text" class="form-control" name="image" value="<%=product.image%>" required>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-success">Submit changes</button>
+        </div>
+    </form>
+    <div class="mb-3">
+        <a href="/products" class="btn btn-primary">Back to home page</a>
+    </div>
+</div>

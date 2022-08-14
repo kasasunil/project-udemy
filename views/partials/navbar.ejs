@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top">
+    <div class="container-fluid">
+      <img class="rounded" src="https://thumbs.dreamstime.com/z/shop-building-colorful-isolated-white-33822015.jpg" width="40px" height="40px">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="/products">Home</a>
+          <a class="nav-link" href="/products/new">New product</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+          <% if(currentUser){ %> 
+            <a href="/logout" class="nav-link btn btn-danger">Logout</a>
+            <% }else{ %>  
+            <a href="/login" class="nav-link">Login</a>
+            <a href="/register" class="nav-link">Register</a>
+            <% } %> 
+        </div>
+      </div>
+    </div>
+  </nav>
