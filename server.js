@@ -66,6 +66,9 @@ app.use((req,res,next)=>{
     res.locals.error=req.flash('error');
     next();
 })
+app.get('/',(req,res)=>{
+    res.redirect('/login');
+})
 
 app.get('/register',(req,res)=>{
     res.render('register');
@@ -88,9 +91,7 @@ app.post('/register',async (req,res)=>{
     }
 })
 
-app.get('/',(req,res)=>{
-    res.redirect('/login');
-})
+
 
 app.get('/login',(req,res)=>{
     res.render('user');
