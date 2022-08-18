@@ -88,6 +88,10 @@ app.post('/register',async (req,res)=>{
     }
 })
 
+app.get('/',(req,res)=>{
+    res.redirect('/login');
+})
+
 app.get('/login',(req,res)=>{
     res.render('user');
 })
