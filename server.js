@@ -10,7 +10,9 @@ const session=require('express-session');
 const flash=require('connect-flash');
 const passport=require('passport');
 const localStrategy=require('passport-local');
+//const productroute=require('./routes/product1');
 
+//app.use('/',productroute);
 app.use(methodoveride('_method'));
 app.engine('ejs',ejsMate);
 app.use(express.urlencoded({extended:true}))
@@ -49,10 +51,12 @@ mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true})
 .catch((err)=>{
     console.log('Not connected');
 })
-
+let oldpath='/products';
 const isLoggedIn=(req,res,next)=>{
     if(!req.isAuthenticated()){
-        req.session.returnTo=req.originalUrl;
+        console.log(req.url);
+        oldpath=req.originalUrl;
+        console.log(oldpath);
         req.flash('error','Sorry you must be signed in...!!!');
         return res.redirect('/login');
     }else{
@@ -91,15 +95,12 @@ app.post('/register',async (req,res)=>{
     }
 })
 
-
-
 app.get('/login',(req,res)=>{
     res.render('user');
 })
 
 app.post('/login',passport.authenticate('local',{failureFlash:true,failureRedirect:'/login'}),async(req,res)=>{
-    const redirectUrl=req.session.returnTo || '/products';
-    delete req.session.returnTo;
+    const redirectUrl=oldpath || '/products';
     req.flash('success','welcome back!!');
     res.redirect(redirectUrl);
 })
@@ -111,6 +112,7 @@ app.get('/logout',(req,res)=>{
         res.redirect('/products');
       });
 })
+
 
 app.get('/products',async(req,res)=>{
     const products=await Product.find({});
@@ -143,6 +145,7 @@ app.get('/products/:id/update',isLoggedIn,async(req,res)=>{
 
 app.patch('/products/:id',async(req,res)=>{
     const {name,price,category,image}=req.body;
+    console.log(req.body);
     const {id}=req.params;
     await Product.updateOne({_id:id},{name:name,price:price,category:category,image:image})
     res.redirect('/products');
@@ -158,6 +161,7 @@ app.delete('/products/:id',isLoggedIn,async(req,res)=>{
     }
     res.redirect('/products');
 })
+
 
 app.use((err,req,res,next)=>{
     const {sta=500,message='Something went wrong'}=err;
